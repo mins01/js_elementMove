@@ -381,7 +381,7 @@
 			document.querySelector('#area7-target1').addEventListener('empointerup',function(event){
 				console.log(event.detail.elementMove,event.detail.event);
 				const els = document.elementsFromPoint(event.detail.event.clientX, event.detail.event.clientY);
-        let r =  els.find(el=>{return el===document.querySelector('#area7-box1')});
+        		let r =  els.find(el=>{return el===document.querySelector('#area7-box1')});
 
 				console.log('hitedTarget',r); 
 				if(r){ElementMove.moveToTarget(this,document.querySelector('#area7-box1'))}else{ElementMove.resetMove(this)}
@@ -395,7 +395,7 @@
 			document.querySelector('#area7-target2').addEventListener('empointerup',function(event){
 				console.log(event.type,event.detail.event.pageX,event.detail.event.pageY);
 				const els = document.elementsFromPoint(event.detail.event.clientX, event.detail.event.clientY);
-        let r =  els.find(el=>{return el===document.querySelector('#area7-box2')});
+        		let r =  els.find(el=>{return el===document.querySelector('#area7-box2')});
 
 				console.log('hitTest',r); 
 				if(r){ElementMove.moveToTarget(this,document.querySelector('#area7-box3'))}else{ElementMove.resetMove(this)}
