@@ -206,11 +206,11 @@ class ElementMove{
         const pos = this.pos(target)
         this.moveTo(target,(pos.x+x),(pos.y+y))
     }
-    static moveToTarget(target,toTarget){
+    static moveToElement(target,toEl){
         const rectTarget = target.getBoundingClientRect();
-        const rectToTarget = toTarget.getBoundingClientRect();
-        let x = rectToTarget.left - rectTarget.left;
-        let y = rectToTarget.top - rectTarget.top;
+        const rectToEl = toEl.getBoundingClientRect();
+        let x = rectToEl.left - rectTarget.left;
+        let y = rectToEl.top - rectTarget.top;
         this.moveBy(target,x,y)
     }
 

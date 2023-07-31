@@ -39,28 +39,11 @@
 	<link rel="stylesheet" href="elementMove.css">
 	<script src="ElementMove.js"></script>
 	<script>
-		let em1 = null;
-		let em2 = null;
-		let em3 = null;
-		let em3_1 = null;
-		let em4 = null;
-		let em5 = null;
-		let em5_1 = null;
-		let em5_2 = null;
-		let em5_3 = null;
-		let em5_4 = null;
-		let em5_5 = null;
-		let em5_6 = null;
-		let em5_7 = null;
-		let em5_8 = null;
-		let em5_9 = null;
-		let em6 = null;
-		let em7 = null;
-		let em8 = null;
 		let ems = [];
 		window.addEventListener('load',(event)=>{
 			document.querySelectorAll('.element-move-area').forEach((el)=>{
 				let em = new ElementMove(el);
+				ems.push(em);
 			})
 		})
 	</script>
@@ -169,8 +152,7 @@
 					<tr><th>static ElementMove.findIsolation(el)</th><td>el 에서 가장 가까운 .element-move-isolation 을 반환</td></tr>
 					<tr><th>static ElementMove.moveTo(target,x,y)</th><td>x,y 로 이동</td></tr>
 					<tr><th>static ElementMove.moveBy(target,x,y)</th><td>x,y 만큼 이동</td></tr>
-					<tr><th>static ElementMove.moveToTarget(target,toTarget)</th><td>toTarget 의 위치로 이동</td></tr>
-					<tr><th>static ElementMove.moveToTarget(target,toTarget)</th><td>toTarget 의 위치로 이동</td></tr>
+					<tr><th>static ElementMove.moveToElement(target,el)</th><td>el 의 위치로 이동</td></tr>
 					<tr><th>static ElementMove.resetMove(target)</th><td>초기 위치로 이동</td></tr>
 					<tr><th>static ElementMove.isolate(moveIsolation,el)</th><td>moveIsolation 기준에 맞춰서 격리 지역안으로 이동한다.</td></tr>
 					<tr><th>let emObject = new ElementMove(areaElement)</th><td>기본 사용법</td></tr>
@@ -317,7 +299,7 @@
 				<div id="area5_4-target2" class="element-move-target box flex-center">2</div>
 			</div>
 		</div>
-
+		<hr>
 		<h3>ElementMove.isolate(in|center|out|none|number,target)</h3>
 		<div class="element-move-isolation margin-center">
 			<div id="area5_8" class="element-move-area margin-center" data-move-type="transform" data-move-isolation="">
@@ -342,10 +324,10 @@
 
 
 		<hr>
-		<h3>lementMove.hitTest(), ElementMove.moveToTarget(), ElementMove.resetMove(), event onpointerup</h3>
+		<h3>lementMove.hitTest(), ElementMove.moveToElement(), ElementMove.resetMove(), event onpointerup</h3>
 		<div id="area6" class="element-move-area margin-center" data-move-type="position" >
-			<div id="area6-target1" class="element-move-target box flex-center" onpointermove="hitTest(event,this,document.querySelector('#area6-box1'))" onpointerup="let r = hitTest(event,this,document.querySelector('#area6-box1'));console.log('hitTest',r); if(r){ElementMove.moveToTarget(this,document.querySelector('#area6-box1'))}else{ElementMove.resetMove(this)}">1</div>
-			<div id="area6-target2" class="element-move-target box flex-center" style="--move-x:100px;--move-y:10px" onpointermove="hitTest(event,this,document.querySelector('#area6-box2'))" onpointerup="let r = hitTest(event,this,document.querySelector('#area6-box2'));console.log('hitTest',r); if(r){ElementMove.moveToTarget(this,document.querySelector('#area6-box3'))}else{ElementMove.resetMove(this)}">2</div>
+			<div id="area6-target1" class="element-move-target box flex-center" onpointermove="hitTest(event,this,document.querySelector('#area6-box1'))" onpointerup="let r = hitTest(event,this,document.querySelector('#area6-box1'));console.log('hitTest',r); if(r){ElementMove.moveToElement(this,document.querySelector('#area6-box1'))}else{ElementMove.resetMove(this)}">1</div>
+			<div id="area6-target2" class="element-move-target box flex-center" style="--move-x:100px;--move-y:10px" onpointermove="hitTest(event,this,document.querySelector('#area6-box2'))" onpointerup="let r = hitTest(event,this,document.querySelector('#area6-box2'));console.log('hitTest',r); if(r){ElementMove.moveToElement(this,document.querySelector('#area6-box3'))}else{ElementMove.resetMove(this)}">2</div>
 
 			<div id="area6-box1" class="box flex-center box-hover" style="position: absolute; left:200px; top:50px">HERE 1</div>
 			<div id="area6-box2" class="box flex-center box-hover" style="width:100px;height:100px;padding:25px; background-color: #0000ff33;position: absolute; left:200px; top:100px ">
@@ -387,7 +369,7 @@
         		let r =  els.find(el=>{return el===document.querySelector('#area7-box1')});
 
 				console.log('hitedTarget',r); 
-				if(r){ElementMove.moveToTarget(this,document.querySelector('#area7-box1'))}else{ElementMove.resetMove(this)}
+				if(r){ElementMove.moveToElement(this,document.querySelector('#area7-box1'))}else{ElementMove.resetMove(this)}
 			})
 			document.querySelector('#area7-target2').addEventListener('empointerdown',function(event){
 				console.log(event.type,event.detail.event.pageX,event.detail.event.pageY);
@@ -401,7 +383,7 @@
         		let r =  els.find(el=>{return el===document.querySelector('#area7-box2')});
 
 				console.log('hitTest',r); 
-				if(r){ElementMove.moveToTarget(this,document.querySelector('#area7-box3'))}else{ElementMove.resetMove(this)}
+				if(r){ElementMove.moveToElement(this,document.querySelector('#area7-box3'))}else{ElementMove.resetMove(this)}
 			})
 		</script>
 		<hr>
