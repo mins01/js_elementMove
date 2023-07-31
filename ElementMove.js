@@ -200,11 +200,13 @@ class ElementMove{
         this.moveTo(target,pos.x,pos.y)
     }
 
-    static moveTo(target,x,y){
+    static moveTo(el,x,y){
+        const target = this.getTarget(el);
         target.style.setProperty('--move-x',x+'px');
         target.style.setProperty('--move-y',y+'px');
     }
-    static moveBy(target,x,y){
+    static moveBy(el,x,y){
+        const target = this.getTarget(el);
         const pos = this.pos(target)
         this.moveTo(target,(pos.x+x),(pos.y+y))
     }
