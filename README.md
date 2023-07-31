@@ -1,2 +1,2 @@
 # js_elementMove
-for HTML element moving lib
+library for HTML element moving 

@@ -100,8 +100,9 @@
 
 		.margin-center{margin:0 auto;}
 
+		.element-move-area{outline: 2px dotted #99ff9999;background-color: #99ff9999; width: 300px; height: 300px;}
 		.element-move-target{outline: 1px solid #0000ff99; background-color: #ccbbccaa; }
-		.element-move-isolation{outline: 2px dotted #ff990099; background-color: #ff990099; 
+		.element-move-isolation{outline: 2px dotted #ff990099; background-color: #ff990099;
 			display: flex;
 			flex-wrap: nowrap;
 			align-content: center;
@@ -109,13 +110,121 @@
 			align-items: center;
 			width: 400px; height: 400px;
 		}
-		.element-move-area{outline: 2px dotted #99ff9999;background-color: #99ff9999; width: 300px; height: 300px;}
 		
 	</style>
 </head>
 <body>
 	<div class="container pb-3">
 		<h1>js elementMove</h1>
+		<hr>
+		<ul class="list-group">
+			<li class="list-group-item"><a href="https://github.com/mins01/js_elementMove">GITHUB</a></li>
+			<li class="list-group-item">HTML의 element를 마우스/터치/펜을 이용해서 사용자가 위치 조정이 가능하도하는 라이브러리</li>
+		</ul>
+		<hr>
+		<h2>DOC</h2>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<h3>files</h3>
+				<table class="table table-bordered table-sm">
+					<tr><th>ElementMove.js</th><td>이동 제어 영역 (*필수)(기본 세팅이 처리됨)</td></tr>
+					<tr><th>elementMove.css</th><td>이동 대상</td></tr>
+					<tr><th>index.html</th><td>현재 파일. 도움말+샘플</td></tr>
+					<tr><th>LICENSE</th><td>라이센스 파일. "공대여자는 이쁘다"</td></tr>
+					<tr><th>README.md</th><td>라이브러리 간단 설명</td></tr>
+				</table>
+			</li>
+			<li class="list-group-item">
+				<h3>HTML class</h3>
+				<table class="table table-bordered table-sm">
+					<tr><th>.element-move-area</th><td>이동 제어 영역 (*필수)(기본 세팅이 처리됨)</td></tr>
+					<tr><th>.element-move-target</th><td>이동 대상</td></tr>
+					<tr><th>.element-move-isolation</th><td>격리 영역. (이동 제한 영역)(옵션)</td></tr>
+				</table>
+			</li>
+			<li class="list-group-item">
+				<h3>.element-move-target attributes</h3>
+				<h4>data-move-type = transform|position (필수)</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>transform</th><td>transform:translate(X,Y)</td></tr>
+					<tr><th>position</th><td>position:absolute;left:X;top:Y</td></tr>
+					<tr><th>주의</th><td>transform 와 position 의 x=0,y=0 의 위치는 다르다!</td></tr>
+				</table>
+				<h3>.element-move-isolation attributes</h3>
+				<h4>data-move-isolation = in|center|out|number|none (옵션)</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>in</th><td>격리 영역 안까지</td></tr>
+					<tr><th>center</th><td>target의 반이 걸친다</td></tr>
+					<tr><th>out</th><td>격리 영역 테두리까지</td></tr>
+					<tr><th>number</th><td>지정한 범위까지(음수 가능)</td></tr>
+					<tr><th>none</th><td>격리 영역 사용 안함</td></tr>
+					<tr><th>(빈값, 설정 안함)</th><td>격리 영역 사용 안함</td></tr>
+				</table>
+			</li>
+			<li class="list-group-item">
+				<h3>CSS</h3>
+				<h4>--move-x , --move-y</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>--move-x</th><td>.element-move-target 의 left 이동 값(px)</td></tr>
+					<tr><th>--move-y</th><td>.element-move-target 의 top 이동 값(px)</td></tr>
+				</table>
+			</li>
+			<li class="list-group-item">
+				<h3>javascript</h3>
+				<h4>--move-x , --move-y</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>ElementMove</th><td>클래스</td></tr>
+					<tr><th>static ElementMove.moveTo(target,x,y)</th><td>x,y 로 이동</td></tr>
+					<tr><th>static ElementMove.moveBy(target,x,y)</th><td>x,y 만큼 이동</td></tr>
+					<tr><th>static ElementMove.moveToTarget(target,toTarget)</th><td>toTarget 의 위치로 이동</td></tr>
+					<tr><th>static ElementMove.moveToTarget(target,toTarget)</th><td>toTarget 의 위치로 이동</td></tr>
+					<tr><th>static ElementMove.resetMove(target)</th><td>초기 위치로 이동</td></tr>
+					<tr><th>static ElementMove.isolate(moveIsolation,el)</th><td>moveIsolation 기준에 맞춰서 격리 지역안으로 이동한다.</td></tr>
+					<tr><th>let emObject = new ElementMove(areaElement)</th><td>기본 사용법</td></tr>
+				</table>
+			</li>
+			<li class="list-group-item">
+				<h3>event</h3>
+				<h4>.element-move-area 에 아래 이벤트를 등록해서 사용한다. (라이브버리에서 자동 사용)</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>pointerdown</th><td> </td></tr>
+					<tr><th>contextmenu</th><td> </td></tr>
+				</table>
+				<h4>window.document 에 아래 이벤트를 동적 등록해서 사용한다. (라이브버리에서 자동 사용)</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>pointermove</th><td> </td></tr>
+					<tr><th>pointerup</th><td> </td></tr>
+				</table>
+				<h4>.element-move-target 에 아래 커스텀 이벤트를 등록해서 사용한다. 해당 동작의 POST 이벤트로 동작시킨다. (개발자가 필요 시 사용)</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>empointerdown</th><td>pointerdown 이벤트 때 trigger 된다.</td></tr>
+					<tr><th>empointermove</th><td>pointermove 이벤트 때 trigger 된다.</td></tr>
+					<tr><th>empointerup</th><td>mpointerup 이벤트 때 trigger 된다.</td></tr>
+					<tr><th>ex</th><td><code>TARGET.addEventListener('empointerdown',function(event){<br>
+						console.log(event.type,event.detail.event.pageX,event.detail.event.pageY);<br>
+					})</code></td></tr>
+				</table>
+				<h4>.element-move-target 에 아래 커스텀 이벤트의 event.detail 값</h4>
+				<table class="table table-bordered table-sm">
+					<tr><th>event.detail</th><td><code>
+						event.detail = {<br>
+							event:이전 연관 event 객체(PointerEvent),<br>
+							elementMove:관련 ElementMove 객체,<br>
+						}
+					</code></td></tr>
+				</table>
+			</li>
+			<li class="list-group-item">
+				<h3>참고</h3>
+				<ul>
+					<li>.element-move-target 가 .element-move-isolation  속에 있어야만 격리 영역이 동작한다. (가장 가까운 태그 기준으로 격리 영역이 사용된다) </li>
+					<li>user-select:none 과 touch-action: none; 이 기본 적용되어있다. (모바일 브라우저의 터치 동작 제어를 해제하기 위해서)</li>
+				</ul>
+			</li>
+
+			<li class="list-group-item">And a fifth one</li>
+		</ul>
+		
 		<hr>
 		<h3>data-move-type="transform"</h3>
 		<div id="area1" class="element-move-area margin-center" data-move-type="transform">

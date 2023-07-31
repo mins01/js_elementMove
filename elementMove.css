@@ -1,8 +1,6 @@
 .element-move-area{
   --move-x:0px;
   --move-y:0px;
-  --move-x-pct:0%;
-  --move-y-pct:0%;
   
   -webkit-touch-callout:none;
   -webkit-user-select:none;

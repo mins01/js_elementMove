@@ -221,7 +221,4 @@ class ElementMove{
         this.moveTo(target,target._initialX,target._initialY);
     }
 
-    static isolateMove(target){
-
-    }
 }
