@@ -52,7 +52,7 @@ class ElementMove{
     }
     pointerdown = (event)=>{
         if(ElementMove.activeElementMove) return false;
-        const target = this.constructor.getTarget(event.target); if(!target){return false;}
+        const target = this.constructor.findTarget(event.target); if(!target){return false;}
         ElementMove.activeElementMove = this;
         event.preventDefault();
 
@@ -134,20 +134,20 @@ class ElementMove{
     }
 
  
-    static getTarget(el){
+    static findTarget(el){
         return el.closest('.element-move-target');
     }
-    static getArea(el){
+    static findArea(el){
         return el.closest('.element-move-area');
     }
-    static getIsolation(el){
+    static findIsolation(el){
         return el.closest('.element-move-isolation');
     }
 
 
     static isolatedPos(moveIsolation,target,x,y){
-        // const area = this.getArea(target);
-        const isolation = this.getIsolation(target);
+        // const area = this.findArea(target);
+        const isolation = this.findIsolation(target);
         if(!isolation){
             return {"x":x , "y":y};
         }
@@ -159,8 +159,7 @@ class ElementMove{
         let gapY = 0;
         if(moveIsolation===null || moveIsolation===undefined || moveIsolation==='' || moveIsolation=='none'){
             return {"x":x , "y":y};
-        }else if(moveIsolation=='in'){          
-            
+        }else if(moveIsolation=='in'){
         }else if(moveIsolation=='center'){
             gapX = rectTarget.width/2;
             gapY = rectTarget.height/2;
@@ -193,20 +192,17 @@ class ElementMove{
         return {"x":x , "y":y};
     }
 
-    static isolate(moveIsolation,el){
-        const target = this.getTarget(el);
+    static isolate(moveIsolation,target){
         let pos = this.pos(target);
         pos = this.isolatedPos(moveIsolation,target,pos.x,pos.y);
         this.moveTo(target,pos.x,pos.y)
     }
 
-    static moveTo(el,x,y){
-        const target = this.getTarget(el);
+    static moveTo(target,x,y){
         target.style.setProperty('--move-x',x+'px');
         target.style.setProperty('--move-y',y+'px');
     }
-    static moveBy(el,x,y){
-        const target = this.getTarget(el);
+    static moveBy(target,x,y){
         const pos = this.pos(target)
         this.moveTo(target,(pos.x+x),(pos.y+y))
     }

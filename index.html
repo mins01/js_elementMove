@@ -164,6 +164,9 @@
 				<h3>javascript</h3>
 				<table class="table table-bordered table-sm">
 					<tr><th>ElementMove</th><td>클래스</td></tr>
+					<tr><th>static ElementMove.findTarget(el)</th><td>el 에서 가장 가까운 .element-move-target 을 반환</td></tr>
+					<tr><th>static ElementMove.findArea(el)</th><td>el 에서 가장 가까운 .element-move-area 을 반환</td></tr>
+					<tr><th>static ElementMove.findIsolation(el)</th><td>el 에서 가장 가까운 .element-move-isolation 을 반환</td></tr>
 					<tr><th>static ElementMove.moveTo(target,x,y)</th><td>x,y 로 이동</td></tr>
 					<tr><th>static ElementMove.moveBy(target,x,y)</th><td>x,y 만큼 이동</td></tr>
 					<tr><th>static ElementMove.moveToTarget(target,toTarget)</th><td>toTarget 의 위치로 이동</td></tr>
@@ -318,22 +321,22 @@
 		<h3>ElementMove.isolate(in|center|out|none|number,target)</h3>
 		<div class="element-move-isolation margin-center">
 			<div id="area5_8" class="element-move-area margin-center" data-move-type="transform" data-move-isolation="">
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',this)">isolate(in)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('center',this)">isolate(center)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('out',this)">isolate(out)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('none',this)">isolate(none)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('100',this)">isolate(100)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('-100',this)">isolate(-100)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',ElementMove.findTarget(this))">isolate(in)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('center',ElementMove.findTarget(this))">isolate(center)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('out',ElementMove.findTarget(this))">isolate(out)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('none',ElementMove.findTarget(this))">isolate(none)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('100',ElementMove.findTarget(this))">isolate(100)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('-100',ElementMove.findTarget(this))">isolate(-100)</button></div>
 			</div>
 		</div>
 		<hr>
 		<h3>ElementMove.moveTo(target,x,y)</h3>
 		<div class="element-move-isolation margin-center">
 			<div id="area5_8" class="element-move-area margin-center" data-move-type="transform" data-move-isolation="">
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(this,0,0)">moveTo(target,0,0)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(this,0,0)">moveTo(target,0,0)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(this,0,0)">moveTo(target,0,0)</button></div>
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(this,0,0)">moveTo(target,0,0)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(ElementMove.findTarget(this),0,0)">moveTo(target,0,0)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(ElementMove.findTarget(this),0,0)">moveTo(target,0,0)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(ElementMove.findTarget(this),0,0)">moveTo(target,0,0)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.moveTo(ElementMove.findTarget(this),0,0)">moveTo(target,0,0)</button></div>
 			</div>
 		</div>
 
@@ -405,11 +408,11 @@
 		<h3>.element-move-isolation with multiple .element-move-area</h3>
 		<div class="element-move-isolation margin-center" style="display: block;height: auto;">
 			<div class="element-move-area margin-center" data-move-type="position" data-move-isolation="">
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',this)">isolate(in)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',ElementMove.findTarget(this))">isolate(in)</button></div>
 			</div>
 			<hr>
 			<div class="element-move-area margin-center" data-move-type="transform" data-move-isolation="">
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',this)">isolate(in)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',ElementMove.findTarget(this))">isolate(in)</button></div>
 			</div>
 		</div>
 
@@ -417,13 +420,21 @@
 		<h3>.element-move-area with multiple .element-move-isolation with multiple </h3>
 		<div class="element-move-area margin-center" data-move-type="position" data-move-isolation="" style="display: block;height: auto;">
 			<div class="element-move-isolation margin-center" style="display: block;height: auto;">
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',this)">isolate(in)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',ElementMove.findTarget(this))">isolate(in)</button></div>
 			</div>
 			<div class="element-move-isolation margin-center" style="display: block;height: auto;">
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',this)">isolate(in)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',ElementMove.findTarget(this))">isolate(in)</button></div>
 			</div>
 			<div class="element-move-isolation margin-center" style="display: block;height: auto;">
-				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',this)">isolate(in)</button></div>
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" ><button class="btn btn-sm btn-info" type="button" onclick="ElementMove.isolate('in',ElementMove.findTarget(this))">isolate(in)</button></div>
+			</div>
+		</div>
+
+		<hr>
+		<h3>onpointerup="ElementMove.isolate()"</h3>
+		<div class="element-move-isolation margin-center">
+			<div class="element-move-area margin-center" data-move-type="transform" data-move-isolation="">
+				<div class="element-move-target box flex-center flex-top"style="--move-x: 300px; --move-y: -50px;" onpointerup="ElementMove.isolate('in',this)" >1</div>
 			</div>
 		</div>
 	</div>
